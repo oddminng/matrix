@@ -1,4 +1,6 @@
-/skynet
-
-/.vscode
+skynet/*
+!skynet/.gitkeep
+luaclib_src/*
+!luaclib_src/.gitkeep
+.vscode
 .DS_Store
