@@ -1,0 +1,14 @@
+syntax = "proto3";
+package gateway.s2c;
+
+//0x010000
+message HeartBeat {
+}
+
+//0x010001
+message Reconnect {
+    enum RetCode {
+        RC_OK=0;
+    }
+    RetCode code=1;
+}

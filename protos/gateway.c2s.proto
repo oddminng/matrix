@@ -1,0 +1,10 @@
+syntax = "proto3";
+package gateway.c2s;
+
+//0x010000
+message HeartBeat {
+}
+
+//0x010001
+message Reconnect {
+}

@@ -1,0 +1,36 @@
+return {
+    s2c = {
+        [0x010000] = "gateway.s2c.HeartBeat",
+        [0x010001] = "gateway.s2c.Reconnect",
+        [0x020001] = "login.s2c.Login",
+        [0x030001] = "agent.s2c.Work",
+        [0x040001] = "scene.s2c.EnterRs",
+        [0x040002] = "scene.s2c.Shift",
+        [0x040003] = "scene.s2c.Leave",
+        [0x040004] = "scene.s2c.AddFood",
+        [0x040005] = "scene.s2c.Eat",
+        [0x040006] = "scene.s2c.Move",
+        [0x040007] = "scene.s2c.Enter",
+        [0x040008] = "scene.s2c.BallList",
+        [0x040009] = "scene.s2c.FoodList",
+    },
+    c2s = {
+        [0x010000] = "gateway.c2s.HeartBeat",
+        [0x010001] = "gateway.c2s.Reconnect",
+        [0x020001] = "login.c2s.Login",
+        [0x030001] = "agent.c2s.Work",
+        [0x040001] = "scene.c2s.Enter",
+        [0x040002] = "scene.c2s.Shift",
+        [0x040003] = "scene.c2s.Leave",
+    },
+    files = {
+        "login.s2c.pb",
+        "login.c2s.pb",
+        "gateway.s2c.pb",
+        "gateway.c2s.pb",
+        "agent.s2c.pb",
+        "agent.c2s.pb",
+        "scene.s2c.pb",
+        "scene.c2s.pb",
+    }
+}

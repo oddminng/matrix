@@ -1,0 +1,8 @@
+syntax = "proto3";
+package login.c2s;
+
+// 0x020001
+message Login {
+    int32 playerid = 1;
+    string pw = 2;
+}

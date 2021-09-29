@@ -52,7 +52,8 @@ cp protobuf.lua ../../../../lualib/                 #将protobuf.lua复制到存
 ## 编译 proto 文件
 
 ```bash
-protoc --descriptor_set_out login.pb login.proto
+cd protos/pbs
+make
 ```
 
 Good Luck~

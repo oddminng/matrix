@@ -16,9 +16,10 @@ s.resp.client = function(source, cmd, msg)
     end
 end
 
-s.client.work = function (msg)
+-- work
+s.client[0x030001] = function(msg)
     s.data.coin = s.data.coin + 1
-    return {"work", s.data.coin}
+    return {0x030001, {coin=s.data.coin}}
 end
 
 s.resp.kick = function(source)
@@ -29,9 +30,8 @@ end
 
 s.resp.exit = function(source) skynet.exit() end
 
-s.resp.send = function (source, msg)
-    skynet.send(s.gate, "lua", "send", s.id, msg)
-end
+s.resp.send =
+    function(source, msg) skynet.send(s.gate, "lua", "send", s.id, msg) end
 
 s.init = function()
     -- 在此处加载角色数据

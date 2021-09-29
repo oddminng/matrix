@@ -1,0 +1,13 @@
+syntax = "proto3";
+package login.s2c;
+
+// 0x020001
+message Login {
+    enum RetCode {
+        RC_OK=0;
+        RC_ERR_PASSWORD_FAIL=1;
+        RC_ERR=2;
+    }
+    RetCode code=1;
+    string msg=2;
+}

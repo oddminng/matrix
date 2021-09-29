@@ -5,7 +5,7 @@ local runconfig = require "runconfig"
 local mynode = skynet.getenv("node")
 require "skynet.manager"
 
-function shutdown_gate()
+local function shutdown_gate()
     skynet.error("admin do shutdown gate")
     for node, _ in pairs(runconfig.cluster) do
         local nodecfg = runconfig[node]
@@ -16,7 +16,7 @@ function shutdown_gate()
     end
 end
 
-function shutdown_agent()
+local function shutdown_agent()
     skynet.error("admin do shutdown agent")
     local anode = runconfig.agentmgr.node
     while true do
@@ -28,7 +28,7 @@ function shutdown_agent()
     end
 end
 
-function shutdown_node()
+local function shutdown_node()
     for node, _ in pairs(runconfig.cluster) do
         if node ~= mynode then
             s.send(node, "nodemgr", "shutdown")
@@ -38,12 +38,23 @@ function shutdown_node()
     skynet.abort()
 end
 
-function stop()
+local function stop()
     skynet.error("admin do stop")
     shutdown_gate()
     shutdown_agent()
     shutdown_node()
     return "ok"
+end
+
+local function reloadpb()
+    skynet.error("admin do reloadpb gate")
+    for node, _ in pairs(runconfig.cluster) do
+        local nodecfg = runconfig[node]
+        for i, _ in pairs(nodecfg.gateway or {}) do
+            local name = "gateway"..i
+            s.call(node, name, "reloadpb")
+        end
+    end
 end
 
 function connect(fd, addr)
@@ -52,6 +63,8 @@ function connect(fd, addr)
     local cmd = socket.readline(fd, "\r\n")
     if cmd == "stop" then
         stop()
+    elseif  cmd == "reloadpb" then
+        reloadpb()
     end
 end
 

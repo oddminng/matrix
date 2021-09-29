@@ -1,0 +1,7 @@
+syntax = "proto3";
+package agent.s2c;
+
+// 0x030001
+message Work {
+    int32 coin = 1;
+}

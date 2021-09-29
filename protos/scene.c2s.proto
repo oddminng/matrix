@@ -1,0 +1,16 @@
+syntax = "proto3";
+package scene.c2s;
+
+// 0x040001
+message Enter {
+}
+
+// 0x040002
+message Shift {
+    int32 speedx=1;
+    int32 speedy=2;
+}
+
+// 0x040003
+message Leave {
+}
